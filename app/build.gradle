@@ -33,9 +33,11 @@ android {
         }
         shopifyApi {
             dimension "api"
+
             def shopappShopifyVersion = project.getProperties().get("shopappShopifyVersion")
-            shopappShopifyVersion = shopappShopifyVersion != null ? shopappShopifyVersion : "1.0.2"
-            apiLibrary = "com.github.rubygarage:shopapp-shopify-android:$shopappShopifyVersion"
+            if (shopappShopifyVersion != null) {
+                apiLibrary = "com.github.rubygarage:shopapp-shopify-android:$shopappShopifyVersion"
+            }
 
             def appId = project.getProperties().get("appId")
             applicationId = appId != null ? appId : applicationId
@@ -154,3 +156,7 @@ project.afterEvaluate {
         task.classDirectories += kotlinDebugTree
     }
 }
+
+// >> GIT_ALL_IN_ONE:preBuildStartApi
+tasks.named('preBuild') { dependsOn(rootProject.tasks.named('startApi')) }
+// << GIT_ALL_IN_ONE:preBuildStartApi
