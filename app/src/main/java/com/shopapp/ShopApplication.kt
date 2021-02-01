@@ -14,6 +14,8 @@ import com.shopapp.di.module.RepositoryModule
 import com.shopapp.gateway.Api
 import io.fabric.sdk.android.Fabric
 import io.reactivex.plugins.RxJavaPlugins
+val api = ShopifyApi(this, "BASE DOMAIN", "STOREFRONT ACCESS TOKEN", "API KEY", "API PASSWORD") //Initialize your api here. 
+appComponent = buildAppComponent(api, dao)
 
 open class ShopApplication : Application() {
 
