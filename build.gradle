@@ -57,3 +57,4 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+implementation "com.github.rubygarage:shopapp-shopify-android:1.0.4"
